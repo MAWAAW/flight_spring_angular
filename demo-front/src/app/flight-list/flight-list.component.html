@@ -1,0 +1,14 @@
+<div class="container" style="text-align:center">
+  <h2>
+    <span class="badge badge-secondary">Flight List</span>
+  </h2>
+
+  <ul class="list-group list-group-flush" *ngFor="let flight of flights; let i=index">
+    <li [routerLink]="['/flight-edit',flight.reference]">
+      Flight {{i+1}} : {{flight | json}}
+    </li>
+  </ul>
+
+  <button class="btn btn-primary" [routerLink]="['/flight-add']">Add</button>
+
+</div>

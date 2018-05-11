@@ -1,0 +1,40 @@
+<form #flightForm="ngForm" (ngSubmit)="save(flightForm.value)" style="text-align:center">
+  <h2>
+    <span class="badge badge-secondary">{{flight.reference ? 'Edit' : 'Add'}} Flight</span>
+  </h2>
+  <hr>
+  <input type="hidden" name="href" [(ngModel)]="flight.href">
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Reference</label>
+    <input placeholder="Flight Reference" [(ngModel)]="flight.reference" required name="reference" #reference>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Departure</label>
+    <input placeholder="Flight departureCity" [(ngModel)]="flight.departureCity" required name="departureCity" #departureCity>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Destination</label>
+    <input placeholder="Flight destinationCity" [(ngModel)]="flight.destinationCity" required name="destinationCity" #destinationCity>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Departure Date&Time</label>
+    <input type="datetime-local" [(ngModel)]="flight.departureDate" required name="departureDate" #departureDate>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Pilot Name</label>
+    <input placeholder="Flight pilotName" [(ngModel)]="flight.pilotName" required name="pilotName" #pilotName>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Airplane Name</label>
+    <input placeholder="Flight airplaneName" [(ngModel)]="flight.airplaneName" required name="airplaneName" #airplaneName>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1" class="col-sm-2 col-form-label">Company Name</label>
+    <input placeholder="Flight companyName" [(ngModel)]="flight.companyName" required name="companyName" #companyName>
+  </div>
+  <div>
+    <button class="btn btn-primary" type="submit" [disabled]="!flightForm.form.valid">Save</button>
+    <button class="btn btn-danger" (click)="remove(flight.href)" *ngIf="flight.href">Delete</button>
+    <a routerLink="/flight-list">Cancel</a>
+  </div>
+</form>
